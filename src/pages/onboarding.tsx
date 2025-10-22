@@ -4,7 +4,6 @@ import { Building2, ChevronLeft } from "lucide-react";
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Stepper } from "@/components/ui/stepper";
-import { Button } from "@/components/ui/button";
 import {
   OrganizationStep,
   type OrganizationFormValues,
@@ -31,7 +30,7 @@ const steps = [
 
 export default function OnboardingPage() {
   const [currentStep, setCurrentStep] = useState(1);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [, setIsSubmitting] = useState(false);
   const [onboardingData, setOnboardingData] = useState<Partial<OnboardingData>>({
     organization: undefined,
     admin: undefined,
@@ -65,7 +64,7 @@ export default function OnboardingPage() {
       toast.success("Organization created successfully!", {
         description: "Your organization and admin account have been set up.",
       });
-    } catch (error) {
+    } catch {
       toast.error("Failed to create organization", {
         description: "Please try again or contact support if the problem persists.",
       });

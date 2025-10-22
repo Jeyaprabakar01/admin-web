@@ -1,7 +1,7 @@
 import { type ReactElement } from "react";
-import type { NextPage } from "next";
 import { Funnel, RefreshCw } from "lucide-react";
 
+import type { NextPageWithLayout } from "@/types/page";
 import { AppLayout } from "@/components/layout/app-layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -14,7 +14,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-const AuditLogsPage: NextPage = () => {
+const AuditLogsPage: NextPageWithLayout = () => {
   return (
     <div className="space-y-6">
       <Card>

@@ -16,7 +16,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
   Form,
@@ -31,7 +30,7 @@ import { toast } from "sonner";
 const loginSchema = z.object({
   email: z.string().email({ message: "Please enter a valid email address" }),
   password: z.string().min(8, { message: "Password must be at least 8 characters" }),
-  rememberMe: z.boolean().default(false),
+  rememberMe: z.boolean(),
 });
 
 type LoginFormValues = z.infer<typeof loginSchema>;
@@ -64,7 +63,7 @@ export default function LoginPage() {
 
       // Redirect to dashboard
       router.push("/");
-    } catch (error) {
+    } catch {
       toast.error("Login failed", {
         description: "Invalid email or password. Please try again.",
       });

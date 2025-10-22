@@ -1,12 +1,12 @@
 import { type ReactElement } from "react";
-import type { NextPage } from "next";
 import { KeyRound } from "lucide-react";
 
+import type { NextPageWithLayout } from "@/types/page";
 import { AppLayout } from "@/components/layout/app-layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
-const ApiKeysPage: NextPage = () => {
+const ApiKeysPage: NextPageWithLayout = () => {
   return (
     <div className="space-y-6">
       <Card>

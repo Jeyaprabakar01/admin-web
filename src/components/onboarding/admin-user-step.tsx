@@ -64,6 +64,7 @@ export function AdminUserStep({
     },
   });
 
+  // eslint-disable-next-line react-hooks/incompatible-library
   const password = form.watch("password");
 
   // Calculate password strength

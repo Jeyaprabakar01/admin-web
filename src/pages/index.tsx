@@ -1,7 +1,7 @@
 import { type ReactElement } from "react";
-import type { NextPage } from "next";
 import { AlertTriangle, ArrowUpRight, CheckCircle2, Shield, UserPlus } from "lucide-react";
 
+import type { NextPageWithLayout } from "@/types/page";
 import { AppLayout } from "@/components/layout/app-layout";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -193,7 +193,7 @@ const auditEvents: IAMAuditEvent[] = [
   },
 ];
 
-const DashboardPage: NextPage = () => {
+const DashboardPage: NextPageWithLayout = () => {
   const activeUsers = users.filter((user) => user.status === "active").length;
   const pendingInvites = users.filter((user) => user.status === "invited").length;
   const suspendedUsers = users.filter((user) => user.status === "suspended").length;
@@ -320,11 +320,11 @@ const DashboardPage: NextPage = () => {
                     <TableCell>
                       <div className="flex flex-col">
                         <span className="font-medium">{event.target}</span>
-                        {event.metadata?.tenantId && (
+                        {event.metadata?.tenantId ? (
                           <span className="text-xs text-muted-foreground">
-                            Tenant: {event.metadata.tenantId}
+                            Tenant: {String(event.metadata.tenantId)}
                           </span>
-                        )}
+                        ) : null}
                       </div>
                     </TableCell>
                     <TableCell>

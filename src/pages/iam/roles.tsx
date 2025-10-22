@@ -1,7 +1,7 @@
 import { type ReactElement } from "react";
-import type { NextPage } from "next";
 import { ShieldPlus } from "lucide-react";
 
+import type { NextPageWithLayout } from "@/types/page";
 import { AppLayout } from "@/components/layout/app-layout";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -25,7 +25,7 @@ const mockRoles = [
   },
 ];
 
-const RolesPage: NextPage = () => {
+const RolesPage: NextPageWithLayout = () => {
   return (
     <div className="space-y-6">
       <Card>

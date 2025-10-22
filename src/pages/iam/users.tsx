@@ -1,7 +1,7 @@
 import { type ReactElement } from "react";
-import type { NextPage } from "next";
 import { Plus } from "lucide-react";
 
+import type { NextPageWithLayout } from "@/types/page";
 import { AppLayout } from "@/components/layout/app-layout";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -15,7 +15,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-const UsersPage: NextPage = () => {
+const UsersPage: NextPageWithLayout = () => {
   return (
     <div className="space-y-6">
       <Card>
