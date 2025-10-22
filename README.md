@@ -20,7 +20,7 @@ A modern, professional admin portal for managing Identity and Access Management 
 - **Forms**: [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/)
 - **Charts**: [Recharts](https://recharts.org/)
 - **Icons**: [Lucide React](https://lucide.dev/)
-- **Testing**: [Jest](https://jestjs.io/) + [React Testing Library](https://testing-library.com/)
+- **Testing**: [Jest](https://jestjs.io/) + [React Testing Library](https://testing-library.com/) + [Playwright](https://playwright.dev/)
 
 ## Getting Started
 
@@ -68,48 +68,105 @@ Open [http://localhost:3000](http://localhost:3000) to view the application.
 
 ## Available Scripts
 
+### Development
+
 - `npm run dev` - Start development server
 - `npm run build` - Build for production
 - `npm start` - Start production server
 - `npm run lint` - Run ESLint
-- `npm test` - Run tests
+- `npm run lint:fix` - Fix ESLint issues automatically
+- `npm run format` - Check code formatting with Prettier
+- `npm run format:fix` - Fix formatting issues automatically
+
+### Testing Scripts
+
+- `npm test` - Run all Jest tests
+- `npm run test:unit` - Run unit tests
+- `npm run test:integration` - Run integration tests
 - `npm run test:watch` - Run tests in watch mode
 - `npm run test:coverage` - Run tests with coverage report
+- `npm run test:e2e` - Run Playwright end-to-end tests
+- `npm run test:e2e:ui` - Run e2e tests with interactive UI
+- `npm run test:e2e:headed` - Run e2e tests in headed mode (see browser)
+- `npm run test:e2e:debug` - Debug e2e tests
+- `npm run test:e2e:report` - View last e2e test report
+- `npm run test:all` - Run all tests (Jest + Playwright)
 
 ## Project Structure
 
 ```
 admin-web/
 ├── src/
-│   ├── components/      # React components
-│   │   └── ui/          # Shadcn/ui components
-│   ├── hooks/           # Custom React hooks
-│   ├── lib/             # Utility functions
-│   ├── pages/           # Next.js pages
-│   │   ├── api/         # API routes
-│   │   ├── _app.tsx     # App wrapper
+│   ├── components/         # React components
+│   │   ├── layout/         # Layout components
+│   │   ├── onboarding/     # Onboarding flow components
+│   │   ├── providers/      # React context providers
+│   │   └── ui/             # Shadcn/ui components
+│   ├── hooks/              # Custom React hooks
+│   ├── lib/                # Utility functions
+│   │   └── iam/            # IAM-specific utilities
+│   ├── pages/              # Next.js pages
+│   │   ├── api/            # API routes
+│   │   ├── audit/          # Audit log pages
+│   │   ├── iam/            # IAM management pages
+│   │   ├── settings/       # Settings pages
+│   │   ├── _app.tsx        # App wrapper
 │   │   └── _document.tsx
-│   ├── styles/          # Global styles
-│   └── types/           # TypeScript type definitions
-├── public/              # Static assets
-├── .github/             # GitHub workflows and templates
-└── tests/               # Test files
+│   ├── styles/             # Global styles
+│   └── types/              # TypeScript type definitions
+├── e2e/                    # Playwright end-to-end tests
+├── public/                 # Static assets
+├── .github/                # GitHub workflows and templates
+├── jest.config.ts          # Jest configuration
+├── playwright.config.ts    # Playwright configuration
+└── TESTING.md              # Comprehensive testing guide
 ```
 
 ## Testing
 
-We use Jest and React Testing Library for testing. Tests are colocated with components in `__tests__` directories.
+We maintain a comprehensive testing strategy covering unit, integration, and end-to-end tests.
+
+### Test Stack
+
+- **Unit & Integration Tests**: Jest + React Testing Library
+- **End-to-End Tests**: Playwright (Chrome, Firefox, WebKit)
+- **Coverage**: Comprehensive test coverage with reports
+
+### Quick Start
 
 ```bash
-# Run all tests
+# Run all Jest tests (unit + integration)
 npm test
 
-# Run tests in watch mode
-npm run test:watch
+# Run e2e tests
+npm run test:e2e
 
-# Generate coverage report
-npm run test:coverage
+# Run all tests
+npm run test:all
 ```
+
+### Test Organization
+
+- **Unit Tests**: Located next to source files (e.g., `utils.test.ts`)
+- **Integration Tests**: Component tests (e.g., `Button.test.tsx`)
+- **E2E Tests**: Located in the `e2e/` directory
+
+### Running Tests
+
+```bash
+# Unit & Integration Tests
+npm test                    # Run once
+npm run test:watch          # Watch mode
+npm run test:coverage       # With coverage report
+
+# End-to-End Tests
+npm run test:e2e            # Headless mode
+npm run test:e2e:ui         # Interactive mode
+npm run test:e2e:headed     # See browser
+npm run test:e2e:debug      # Debug mode
+```
+
+For detailed testing documentation, patterns, and best practices, see [TESTING.md](TESTING.md).
 
 ## Contributing
 
