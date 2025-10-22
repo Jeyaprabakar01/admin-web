@@ -1,0 +1,195 @@
+# Windsurf Rules for Cerberus IAM Admin Web
+
+## Project Overview
+Next.js 16 (Pages Router) IAM admin portal with TypeScript, React 19, Tailwind CSS 4, and Shadcn/ui.
+
+## Critical Patterns
+
+### Page Layout with getLayout
+When creating pages with AppLayout, use the shared type:
+
+```typescript
+import type { NextPageWithLayout } from "@/types/page";
+import { type ReactElement } from "react";
+import { AppLayout } from "@/components/layout/app-layout";
+
+const MyPage: NextPageWithLayout = () => {
+  return <div>Content</div>;
+};
+
+MyPage.getLayout = function getLayout(page: ReactElement) {
+  return (
+    <AppLayout
+      title="Page Title"
+      description="Description"
+      breadcrumbs={[{ label: "Parent", href: "/parent" }, { label: "Current" }]}
+    >
+      {page}
+    </AppLayout>
+  );
+};
+
+export default MyPage;
+```
+
+Requirements:
+- Type as `NextPageWithLayout` not `NextPage`
+- Import from `@/types/page` (never define inline)
+- `getLayout` returns `ReactElement` not `ReactNode`
+
+### IAM Permission System
+Type-safe permission utilities:
+
+```typescript
+import { buildPermissionKey, hasPermission, resolveUserPermissions } from "@/lib/iam";
+
+// Build permission keys (resource:action format)
+const key = buildPermissionKey("users", "create"); // "users:create"
+
+// Check permissions
+if (hasPermission(permissions, "users:read")) { }
+if (hasPermission(permissions, ["users:read", "users:create"])) { }
+
+// Aggregate permissions from roles
+const userPerms = resolveUserPermissions(user, allRoles);
+```
+
+## Code Standards
+
+### Imports
+Always use `@/` path alias:
+```typescript
+import { Button } from "@/components/ui/button";
+import type { IAMUser } from "@/types/iam";
+```
+
+### Forms with Zod
+Don't use `.default()` on required boolean fields:
+```typescript
+// ✓ Correct
+rememberMe: z.boolean()
+
+// ✗ Wrong (causes type errors)
+rememberMe: z.boolean().default(false)
+```
+
+Provide default values in `useForm`:
+```typescript
+const form = useForm({
+  resolver: zodResolver(schema),
+  defaultValues: { rememberMe: false },
+});
+```
+
+### Conditional Rendering
+Use ternary for optional unknown types:
+```typescript
+// ✓ Correct
+{value ? <span>{String(value)}</span> : null}
+
+// ✗ Wrong (type error)
+{value && <span>{String(value)}</span>}
+```
+
+### React Hook Form Watch
+Suppress React Compiler warning:
+```typescript
+// eslint-disable-next-line react-hooks/incompatible-library
+const password = form.watch("password");
+```
+
+### setState in useEffect
+Avoid React Compiler errors:
+```typescript
+// ✓ Correct
+useEffect(() => {
+  const timer = setTimeout(() => setMounted(true), 0);
+  return () => clearTimeout(timer);
+}, []);
+
+// ✗ Wrong
+useEffect(() => setMounted(true), []);
+```
+
+## Testing
+
+### Test Locations
+- Unit: Colocated (e.g., `utils.test.ts`)
+- Component: Next to components (e.g., `Button.test.tsx`)
+- E2E: In `e2e/` directory (e.g., `login.spec.ts`)
+
+### Commands
+```bash
+npm test                    # Jest tests
+npm run test:watch          # Jest watch mode
+npm run test:e2e:ui         # Playwright UI
+jest file.test.ts           # Specific test
+npx playwright test file.spec.ts  # Specific e2e
+```
+
+### Testing Patterns
+Use React Testing Library for component tests:
+```typescript
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+
+it("handles user interaction", async () => {
+  const user = userEvent.setup();
+  render(<Component />);
+  await user.click(screen.getByRole("button"));
+  expect(screen.getByText("Result")).toBeInTheDocument();
+});
+```
+
+Use Playwright for e2e tests:
+```typescript
+test("user flow", async ({ page }) => {
+  await page.goto("/login");
+  await page.getByLabel("Email").fill("user@example.com");
+  await page.getByRole("button", { name: "Sign in" }).click();
+  await expect(page).toHaveURL("/");
+});
+```
+
+## Components
+
+### Shadcn/ui
+Never modify `src/components/ui/*` directly:
+```bash
+npx shadcn@latest add <component>
+```
+
+### Styling
+Use `cn()` for conditional classes:
+```typescript
+import { cn } from "@/lib/utils";
+
+<div className={cn("base", active && "active", variant === "primary" && "primary")} />
+```
+
+## TypeScript
+- Strict mode enabled
+- ESLint with `--max-warnings=0`
+- Explicit types for non-obvious parameters/returns
+
+## Pre-commit
+Husky runs on every commit:
+- `eslint --fix` on TS/JS files
+- `prettier --write` on all files
+- Blocks if linting fails
+
+Run `npm run lint` before committing.
+
+## Development
+```bash
+npm run dev          # Dev server
+npm run build        # Production build
+npm run lint         # ESLint
+npm run format:fix   # Prettier
+npm test             # All tests
+```
+
+## Documentation
+- `CLAUDE.md` - Architecture details
+- `TESTING.md` - Testing guide
+- `README.md` - Setup guide

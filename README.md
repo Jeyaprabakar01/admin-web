@@ -170,7 +170,7 @@ For detailed testing documentation, patterns, and best practices, see [TESTING.m
 
 ## Contributing
 
-We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details on how to get started.
+We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for onboarding steps and [AGENTS.md](AGENTS.md) for day-to-day engineering guidelines.
 
 ## Code of Conduct
 
