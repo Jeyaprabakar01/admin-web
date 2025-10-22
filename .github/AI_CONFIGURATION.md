@@ -8,8 +8,8 @@ This repository is configured for multiple AI coding assistants. Each tool has i
 
 | File                              | AI Tool           | Purpose                                            |
 | --------------------------------- | ----------------- | -------------------------------------------------- |
-| `.cursor`                         | Cursor AI         | Concise project guide with essential patterns      |
-| `.windsurf`                       | Windsurf          | Agent profile with workflow expectations           |
+| `.cursorrules`                    | Cursor AI         | Concise project guide with essential patterns      |
+| `.windsurfrules`                  | Windsurf          | Agent profile with workflow expectations           |
 | `.github/copilot-instructions.md` | GitHub Copilot    | Primary goals and coding guidelines                |
 | `.ai/instructions.md`             | General AI Agents | Collaboration guide (Junie, Aider, Continue, etc.) |
 
@@ -26,12 +26,12 @@ This repository is configured for multiple AI coding assistants. Each tool has i
 
 ### Cursor AI
 
-- **Primary**: `.cursor`
+- **Primary**: `.cursorrules`
 - **References**: `CLAUDE.md`, `AGENTS.md`, `TESTING.md`, `SECURITY.md`
 
 ### Windsurf
 
-- **Primary**: `.windsurf`
+- **Primary**: `.windsurfrules`
 - **References**: `CLAUDE.md`, `AGENTS.md`, `TESTING.md`, `SECURITY.md`
 
 ### GitHub Copilot
@@ -68,7 +68,7 @@ When adding support for a new AI tool:
 
 ## Maintenance
 
-- Tool-specific configs (`.cursor`, `.windsurf`, etc.) should remain lightweight
+- Tool-specific configs (`.cursorrules`, `.windsurfrules`, etc.) should remain lightweight
 - Architectural changes update `CLAUDE.md`
 - Workflow changes update `AGENTS.md`
 - Testing changes update `TESTING.md`
