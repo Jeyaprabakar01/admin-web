@@ -1,0 +1,29 @@
+# Cursor AI Project Guide
+
+## Context
+- Next.js 16 (Pages Router) admin portal for Cerberus IAM.
+- TypeScript + React 19, Tailwind CSS 4, shadcn/ui components.
+- Strict linting (`npm run lint` with `--max-warnings=0`) and Prettier formatting (`npm run format:fix`).
+
+## Development Flow
+1. Install dependencies with `npm install`.
+2. Run `npm run dev` for the local server.
+3. Execute `npm run lint` and `npm run test:all` before committing.
+
+## Code Patterns
+- Use `NextPageWithLayout` from `@/types/page` and `getLayout` for pages needing `AppLayout`.
+- Import modules via `@/` aliases, never relative traversals like `../../`.
+- For shadcn/ui primitives, extend components outside `src/components/ui/*`; regenerate via `npx shadcn@latest add <component>`.
+- Avoid `.default()` on boolean Zod schema fields; pass defaults through `useForm`.
+- Use ternary rendering for values that may be `unknown` to satisfy React Compiler.
+
+## Testing Guidance
+- Jest unit/integration tests colocate with source (`*.test.ts[x]`).
+- Playwright specs live in `e2e/`; prefer descriptive filenames (e.g., `tenant-onboarding.spec.ts`).
+- Commands: `npm test`, `npm run test:coverage`, `npm run test:e2e`, `npm run test:e2e:ui`, `npm run test:all`.
+
+## Resources
+- Engineering workflow: `AGENTS.md`
+- Architecture: `CLAUDE.md`
+- Extended testing guide: `TESTING.md`
+- Security practices: `SECURITY.md`

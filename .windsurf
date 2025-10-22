@@ -1,0 +1,36 @@
+# Windsurf Agent Profile
+
+## Project Snapshot
+- Cerberus IAM Admin Web portal built with Next.js 16 (Pages Router), React 19, TypeScript, Tailwind CSS 4, and shadcn/ui.
+- Strict linting/formatting enforced through ESLint (`npm run lint`) and Prettier (`npm run format:fix`).
+- Automated tests: Jest (unit/integration) and Playwright (e2e).
+
+## What Matters Most
+1. Uphold information architecture documented in `CLAUDE.md` and patterns captured in `.windsurfrules`.
+2. Keep imports path-aliased with `@/`.
+3. Use `NextPageWithLayout` + `getLayout` for pages requiring `AppLayout`.
+4. Maintain type safety—no unchecked `any`, prefer explicit return types for exported functions.
+
+## Development Workflow
+- Install dependencies: `npm install`.
+- Run dev server: `npm run dev`.
+- Before submitting changes run:
+  - `npm run lint`
+  - `npm run format:fix`
+  - `npm test` (or specific suites)
+  - `npm run test:e2e` when flows change.
+
+## Testing Expectations
+- Co-locate Jest tests beside implementation (`*.test.ts[x]`) and keep them deterministic.
+- Add/adjust Playwright scenarios in `e2e/` for multi-tenant IAM paths and onboarding flows.
+- Review `TESTING.md` for fixtures, command matrix, and troubleshooting.
+
+## Change Management
+- Commit messages follow Conventional Commits.
+- Pull requests require linked issue, clear summary, and screenshots/gifs for UI changes.
+- Mention security reviewers for updates touching authentication, authorization, or secrets.
+
+## References
+- Day-to-day contributor guide: `AGENTS.md`
+- Security practices: `SECURITY.md`
+- Testing deep dive: `TESTING.md`
