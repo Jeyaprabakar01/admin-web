@@ -8,10 +8,7 @@ type ThemeProviderProps = {
   attribute?: string;
 };
 
-export function ThemeProvider({
-  children,
-  attribute = "class",
-}: ThemeProviderProps) {
+export function ThemeProvider({ children, attribute = "class" }: ThemeProviderProps) {
   return (
     <NextThemesProvider
       attribute={attribute}

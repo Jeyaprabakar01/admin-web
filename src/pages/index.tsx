@@ -1,12 +1,6 @@
 import { type ReactElement } from "react";
 import type { NextPage } from "next";
-import {
-  AlertTriangle,
-  ArrowUpRight,
-  CheckCircle2,
-  Shield,
-  UserPlus,
-} from "lucide-react";
+import { AlertTriangle, ArrowUpRight, CheckCircle2, Shield, UserPlus } from "lucide-react";
 
 import { AppLayout } from "@/components/layout/app-layout";
 import { Badge } from "@/components/ui/badge";
@@ -36,12 +30,7 @@ import {
   sortUsersByRecentActivity,
   summarizeTenants,
 } from "@/lib/iam";
-import type {
-  IAMAuditEvent,
-  IAMRole,
-  IAMTenant,
-  IAMUser,
-} from "@/types/iam";
+import type { IAMAuditEvent, IAMRole, IAMTenant, IAMUser } from "@/types/iam";
 
 const permissions = {
   manageUsers: buildPermissionKey("users", "update"),
@@ -69,11 +58,7 @@ const roles: IAMRole[] = [
     description: "Monitors audit events and manages policies.",
     level: 70,
     system: false,
-    permissions: [
-      permissions.managePolicies,
-      permissions.reviewAudit,
-      permissions.manageUsers,
-    ],
+    permissions: [permissions.managePolicies, permissions.reviewAudit, permissions.manageUsers],
   },
   {
     id: "tenant-owner",
@@ -81,11 +66,7 @@ const roles: IAMRole[] = [
     description: "Manages tenant members and invitations.",
     level: 50,
     system: false,
-    permissions: [
-      permissions.manageUsers,
-      permissions.inviteUsers,
-      permissions.manageApiTokens,
-    ],
+    permissions: [permissions.manageUsers, permissions.inviteUsers, permissions.manageApiTokens],
   },
 ];
 
@@ -253,8 +234,7 @@ const DashboardPage: NextPage = () => {
           </CardContent>
           <CardFooter className="pt-0">
             <div className="flex items-center gap-2 text-xs text-muted-foreground">
-              <UserPlus className="size-4" />
-              3 invites expire this week
+              <UserPlus className="size-4" />3 invites expire this week
             </div>
           </CardFooter>
         </Card>
@@ -350,9 +330,7 @@ const DashboardPage: NextPage = () => {
                     <TableCell>
                       <div className="flex flex-col">
                         <span className="font-medium">{event.actor.name}</span>
-                        <span className="text-xs text-muted-foreground">
-                          {event.actor.type}
-                        </span>
+                        <span className="text-xs text-muted-foreground">{event.actor.type}</span>
                       </div>
                     </TableCell>
                     <TableCell className="text-right text-sm text-muted-foreground">
@@ -374,9 +352,7 @@ const DashboardPage: NextPage = () => {
         <Card className="lg:col-span-3">
           <CardHeader>
             <CardTitle>Role coverage</CardTitle>
-            <CardDescription>
-              Permissions included in each high-priority role.
-            </CardDescription>
+            <CardDescription>Permissions included in each high-priority role.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             {roles.map((role) => {

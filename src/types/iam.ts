@@ -6,13 +6,7 @@ export type IAMPermissionResource =
   | "api-tokens"
   | "audit";
 
-export type IAMPermissionAction =
-  | "read"
-  | "create"
-  | "update"
-  | "delete"
-  | "assign"
-  | "review";
+export type IAMPermissionAction = "read" | "create" | "update" | "delete" | "assign" | "review";
 
 export type IAMPermissionKey = `${IAMPermissionResource}:${IAMPermissionAction}`;
 

@@ -7,10 +7,7 @@ const eslintConfig = defineConfig([
   ...nextTs,
   {
     name: "admin-web:testing-globals",
-    files: [
-      "**/__tests__/**/*.{ts,tsx,js,jsx}",
-      "**/*.{test,spec}.{ts,tsx,js,jsx}",
-    ],
+    files: ["**/__tests__/**/*.{ts,tsx,js,jsx}", "**/*.{test,spec}.{ts,tsx,js,jsx}"],
     languageOptions: {
       globals: {
         jest: "readonly",

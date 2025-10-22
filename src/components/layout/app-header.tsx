@@ -30,12 +30,7 @@ export type AppHeaderProps = {
   actions?: ReactNode;
 };
 
-export function AppHeader({
-  title,
-  description,
-  breadcrumbs,
-  actions,
-}: AppHeaderProps) {
+export function AppHeader({ title, description, breadcrumbs, actions }: AppHeaderProps) {
   const items = breadcrumbs?.length
     ? breadcrumbs
     : [{ label: "Dashboard", href: "/" }, { label: title }];
@@ -74,11 +69,7 @@ export function AppHeader({
         <div className="flex items-center gap-2">
           <div className="relative hidden sm:block">
             <Search className="text-muted-foreground absolute left-3 top-1/2 size-4 -translate-y-1/2" />
-            <Input
-              type="search"
-              placeholder="Search users, roles, policies..."
-              className="pl-9"
-            />
+            <Input type="search" placeholder="Search users, roles, policies..." className="pl-9" />
           </div>
           <Button
             variant="outline"
@@ -88,20 +79,10 @@ export function AppHeader({
           >
             <Search className="size-4" />
           </Button>
-          <Button
-            variant="outline"
-            size="icon"
-            className="size-9"
-            aria-label="Filter"
-          >
+          <Button variant="outline" size="icon" className="size-9" aria-label="Filter">
             <Filter className="size-4" />
           </Button>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="size-9"
-            aria-label="Notifications"
-          >
+          <Button variant="ghost" size="icon" className="size-9" aria-label="Notifications">
             <Bell className="size-4" />
           </Button>
           <ThemeToggle />
@@ -110,9 +91,7 @@ export function AppHeader({
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex flex-col">
           <h1 className="text-2xl font-semibold tracking-tight">{title}</h1>
-          {description && (
-            <p className="text-sm text-muted-foreground">{description}</p>
-          )}
+          {description && <p className="text-sm text-muted-foreground">{description}</p>}
         </div>
         {actions}
       </div>

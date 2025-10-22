@@ -4,13 +4,7 @@ import { FileText } from "lucide-react";
 
 import { AppLayout } from "@/components/layout/app-layout";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 const PoliciesPage: NextPage = () => {
   return (
@@ -19,8 +13,8 @@ const PoliciesPage: NextPage = () => {
         <CardHeader>
           <CardTitle>Policy workspace</CardTitle>
           <CardDescription>
-            The policy builder will surface policy-as-code tooling and simulations. Integration hooks
-            are not yet wired.
+            The policy builder will surface policy-as-code tooling and simulations. Integration
+            hooks are not yet wired.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -40,10 +34,7 @@ PoliciesPage.getLayout = function getLayout(page: ReactElement) {
     <AppLayout
       title="Policy Authoring"
       description="Design guardrails, simulate blast radius, and ship permission changes safely."
-      breadcrumbs={[
-        { label: "Identity & Access", href: "/iam/users" },
-        { label: "Policies" },
-      ]}
+      breadcrumbs={[{ label: "Identity & Access", href: "/iam/users" }, { label: "Policies" }]}
       actions={
         <Button className="gap-2">
           <FileText className="size-4" />

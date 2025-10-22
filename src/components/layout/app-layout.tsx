@@ -11,13 +11,7 @@ type AppLayoutProps = AppHeaderProps & {
   children: ReactNode;
 };
 
-export function AppLayout({
-  children,
-  title,
-  description,
-  breadcrumbs,
-  actions,
-}: AppLayoutProps) {
+export function AppLayout({ children, title, description, breadcrumbs, actions }: AppLayoutProps) {
   return (
     <SidebarProvider>
       <div className="flex min-h-screen w-full bg-background">

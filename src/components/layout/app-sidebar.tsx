@@ -94,9 +94,7 @@ export function AppSidebar() {
           </span>
           <span className="flex flex-col">
             <span className="text-sm font-semibold">Identity Workspace</span>
-            <span className="text-xs text-muted-foreground">
-              Admin Portal
-            </span>
+            <span className="text-xs text-muted-foreground">Admin Portal</span>
           </span>
         </Link>
       </SidebarHeader>
@@ -116,9 +114,7 @@ export function AppSidebar() {
                       <Link href={item.href}>
                         <item.icon className="size-4" />
                         <span>{item.title}</span>
-                        {item.badge && (
-                          <SidebarMenuBadge>{item.badge}</SidebarMenuBadge>
-                        )}
+                        {item.badge && <SidebarMenuBadge>{item.badge}</SidebarMenuBadge>}
                         {item.status === "beta" && (
                           <Badge variant="outline" className="ml-auto text-xs">
                             Beta
@@ -146,12 +142,8 @@ export function AppSidebar() {
             <AvatarFallback>JD</AvatarFallback>
           </Avatar>
           <div className="flex flex-1 flex-col">
-            <span className="text-sm font-medium text-sidebar-foreground">
-              Jordan Daniels
-            </span>
-            <span className="text-xs text-muted-foreground">
-              Principal IAM Admin
-            </span>
+            <span className="text-sm font-medium text-sidebar-foreground">Jordan Daniels</span>
+            <span className="text-xs text-muted-foreground">Principal IAM Admin</span>
           </div>
           <Badge variant="secondary" className="text-xs">
             Enterprise

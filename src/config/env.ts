@@ -10,15 +10,8 @@ const envSchema = z.object({
   IAM_API_URL: z.string().url(),
   IAM_TOKEN_AUDIENCE: z.string().min(1),
   IAM_DEFAULT_TENANT_ID: z.string().min(1).default("primary"),
-  LOG_LEVEL: z
-    .enum(["trace", "debug", "info", "warn", "error", "fatal"])
-    .default("info"),
-  SENTRY_DSN: z
-    .string()
-    .url()
-    .or(z.literal(""))
-    .optional()
-    .default(""),
+  LOG_LEVEL: z.enum(["trace", "debug", "info", "warn", "error", "fatal"]).default("info"),
+  SENTRY_DSN: z.string().url().or(z.literal("")).optional().default(""),
 });
 
 const parsed = envSchema.safeParse({

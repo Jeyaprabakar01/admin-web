@@ -5,13 +5,7 @@ import { ShieldPlus } from "lucide-react";
 import { AppLayout } from "@/components/layout/app-layout";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 const mockRoles = [
   {
@@ -37,7 +31,9 @@ const RolesPage: NextPage = () => {
       <Card>
         <CardHeader>
           <CardTitle>Role catalogue</CardTitle>
-          <CardDescription>Seed data for IAM roles will be populated via API integration.</CardDescription>
+          <CardDescription>
+            Seed data for IAM roles will be populated via API integration.
+          </CardDescription>
         </CardHeader>
         <CardContent className="grid gap-4 md:grid-cols-2">
           {mockRoles.map((role) => (
@@ -64,10 +60,7 @@ RolesPage.getLayout = function getLayout(page: ReactElement) {
     <AppLayout
       title="Role & Policy Management"
       description="Define and govern reusable role definitions that power least privilege access."
-      breadcrumbs={[
-        { label: "Identity & Access", href: "/iam/users" },
-        { label: "Roles" },
-      ]}
+      breadcrumbs={[{ label: "Identity & Access", href: "/iam/users" }, { label: "Roles" }]}
       actions={
         <Button className="gap-2">
           <ShieldPlus className="size-4" />

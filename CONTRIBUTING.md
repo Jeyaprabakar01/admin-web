@@ -42,6 +42,7 @@ This project adheres to a Code of Conduct. By participating, you are expected to
 ## Development Workflow
 
 1. **Keep your fork synced**:
+
    ```bash
    git fetch upstream
    git checkout main
@@ -55,6 +56,7 @@ This project adheres to a Code of Conduct. By participating, you are expected to
    - Update documentation as needed
 
 3. **Test your changes**:
+
    ```bash
    npm test
    npm run lint
@@ -64,6 +66,7 @@ This project adheres to a Code of Conduct. By participating, you are expected to
 4. **Commit your changes** (see [Commit Messages](#commit-messages))
 
 5. **Push to your fork**:
+
    ```bash
    git push origin feature/your-feature-name
    ```
@@ -261,6 +264,7 @@ Use the feature request template when creating an issue.
 ## Questions?
 
 If you have questions:
+
 - Check existing issues and discussions
 - Create a new discussion for questions
 - Reach out to maintainers

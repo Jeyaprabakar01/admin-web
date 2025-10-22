@@ -4,14 +4,15 @@ import { Funnel, RefreshCw } from "lucide-react";
 
 import { AppLayout } from "@/components/layout/app-layout";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 const AuditLogsPage: NextPage = () => {
   return (
@@ -65,10 +66,7 @@ AuditLogsPage.getLayout = function getLayout(page: ReactElement) {
     <AppLayout
       title="Audit Activity"
       description="Investigate critical security events across tenants and systems."
-      breadcrumbs={[
-        { label: "Identity & Access", href: "/iam/users" },
-        { label: "Audit Logs" },
-      ]}
+      breadcrumbs={[{ label: "Identity & Access", href: "/iam/users" }, { label: "Audit Logs" }]}
     >
       {page}
     </AppLayout>

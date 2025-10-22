@@ -4,13 +4,7 @@ import { KeyRound } from "lucide-react";
 
 import { AppLayout } from "@/components/layout/app-layout";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 const ApiKeysPage: NextPage = () => {
   return (
@@ -37,10 +31,7 @@ ApiKeysPage.getLayout = function getLayout(page: ReactElement) {
     <AppLayout
       title="API Token Management"
       description="Issue, rotate, and revoke service-level credentials."
-      breadcrumbs={[
-        { label: "Identity & Access", href: "/iam/users" },
-        { label: "API Tokens" },
-      ]}
+      breadcrumbs={[{ label: "Identity & Access", href: "/iam/users" }, { label: "API Tokens" }]}
       actions={
         <Button className="gap-2">
           <KeyRound className="size-4" />

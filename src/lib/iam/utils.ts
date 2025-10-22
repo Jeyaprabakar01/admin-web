@@ -39,8 +39,7 @@ export function hasPermission(
   permissions: Iterable<IAMPermissionKey>,
   required: IAMPermissionKey | IAMPermissionKey[],
 ): boolean {
-  const permissionSet =
-    permissions instanceof Set ? permissions : new Set(permissions);
+  const permissionSet = permissions instanceof Set ? permissions : new Set(permissions);
   if (Array.isArray(required)) {
     return required.every((permission) => permissionSet.has(permission));
   }

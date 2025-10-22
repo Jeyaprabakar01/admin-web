@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { Monitor, MoonStar, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 
@@ -19,21 +20,23 @@ const themes = [
 
 export function ThemeToggle() {
   const { setTheme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  // useEffect only runs on the client, so now we can safely show the UI
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const activeTheme = themes.find((theme) => theme.value === resolvedTheme);
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button
-          variant="outline"
-          size="icon"
-          className="size-9"
-          aria-label="Toggle theme"
-        >
+        <Button variant="outline" size="icon" className="size-9" aria-label="Toggle theme">
           <Sun className="size-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
           <MoonStar className="absolute size-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
           <span className="sr-only">
-            Switch theme (current: {activeTheme?.label ?? "system"})
+            {mounted ? `Switch theme (current: ${activeTheme?.label ?? "system"})` : "Toggle theme"}
           </span>
         </Button>
       </DropdownMenuTrigger>

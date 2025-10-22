@@ -4,13 +4,7 @@ import { Building2 } from "lucide-react";
 
 import { AppLayout } from "@/components/layout/app-layout";
 import { Badge } from "@/components/ui/badge";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 const TenantsPage: NextPage = () => {
   return (
@@ -41,10 +35,7 @@ TenantsPage.getLayout = function getLayout(page: ReactElement) {
     <AppLayout
       title="Tenant Management"
       description="Monitor tenant health, compliance posture, and lifecycle events."
-      breadcrumbs={[
-        { label: "Organization", href: "/iam/tenants" },
-        { label: "Tenants" },
-      ]}
+      breadcrumbs={[{ label: "Organization", href: "/iam/tenants" }, { label: "Tenants" }]}
       actions={<Badge variant="secondary">API integration pending</Badge>}
     >
       {page}
