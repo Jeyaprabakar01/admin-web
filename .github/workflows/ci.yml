@@ -31,7 +31,7 @@ permissions:
 env:
   NODE_VERSION: "20"
   NODE_OPTIONS: "--max_old_space_size=4096"
-  PLAYWRIGHT_BROWSERS_PATH: ${{ runner.temp }}/pw-browsers
+  PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/pw-browsers
 
 jobs:
   lint:
