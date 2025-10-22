@@ -8,7 +8,7 @@ import {
   groupAuditEventsBySeverity,
   formatRelativeTime,
 } from "./utils";
-import type { IAMRole, IAMUser, IAMTenant, IAMAuditEvent } from "@/types/iam";
+import type { IAMAuditEvent, IAMPermissionKey, IAMRole, IAMTenant, IAMUser } from "@/types/iam";
 
 describe("IAM Utils - Unit Tests", () => {
   describe("buildPermissionKey", () => {
@@ -141,7 +141,7 @@ describe("IAM Utils - Unit Tests", () => {
   });
 
   describe("hasPermission", () => {
-    const permissions = new Set(["users:read", "users:create", "roles:read"]);
+    const permissions = new Set<IAMPermissionKey>(["users:read", "users:create", "roles:read"]);
 
     it("should return true if user has the required permission", () => {
       expect(hasPermission(permissions, "users:read")).toBe(true);
@@ -157,13 +157,13 @@ describe("IAM Utils - Unit Tests", () => {
     });
 
     it("should handle empty permission set", () => {
-      const emptyPerms = new Set();
+      const emptyPerms = new Set<IAMPermissionKey>();
       expect(hasPermission(emptyPerms, "users:read")).toBe(false);
       expect(hasPermission(emptyPerms, [])).toBe(true); // empty requirements = true
     });
 
     it("should handle permissions as iterable array", () => {
-      const permsArray = ["users:read", "users:create"];
+      const permsArray: IAMPermissionKey[] = ["users:read", "users:create"];
       expect(hasPermission(permsArray, "users:read")).toBe(true);
       expect(hasPermission(permsArray, "users:delete")).toBe(false);
     });
