@@ -7,9 +7,12 @@ import { Stepper } from "@/components/ui/stepper";
 import {
   OrganizationStep,
   type OrganizationFormValues,
-} from "@/components/onboarding/organization-step";
-import { AdminUserStep, type AdminUserFormValues } from "@/components/onboarding/admin-user-step";
-import { CompletionStep } from "@/components/onboarding/completion-step";
+} from "@/components/blocks/onboarding/organization-step";
+import {
+  AdminUserStep,
+  type AdminUserFormValues,
+} from "@/components/blocks/onboarding/admin-user-step";
+import { CompletionStep } from "@/components/blocks/onboarding/completion-step";
 import type { OnboardingData } from "@/types/auth";
 import { toast } from "sonner";
 
