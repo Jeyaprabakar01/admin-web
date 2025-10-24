@@ -10,7 +10,7 @@ import {
 } from "@/components/onboarding/organization-step";
 import { AdminUserStep, type AdminUserFormValues } from "@/components/onboarding/admin-user-step";
 import { CompletionStep } from "@/components/onboarding/completion-step";
-import type { OnboardingData } from "@/types/auth.types";
+import type { OnboardingData } from "@/types/auth";
 import { toast } from "sonner";
 
 const steps = [

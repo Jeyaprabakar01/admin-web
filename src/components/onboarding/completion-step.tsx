@@ -3,7 +3,7 @@ import { CheckCircle2, Building2, User, ArrowRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import type { OnboardingData } from "@/types/auth.types";
+import type { OnboardingData } from "@/types/auth";
 
 interface CompletionStepProps {
   data: OnboardingData;

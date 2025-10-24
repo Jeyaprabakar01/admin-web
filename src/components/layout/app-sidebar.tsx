@@ -25,7 +25,6 @@ import {
   SidebarMenuBadge,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarSeparator,
 } from "@/components/ui/sidebar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -134,7 +133,6 @@ export function AppSidebar() {
           </SidebarGroup>
         ))}
       </SidebarContent>
-      <SidebarSeparator />
       <SidebarFooter>
         <div className="flex items-center gap-3 rounded-md border bg-sidebar-accent/40 p-3">
           <Avatar className="size-10">
